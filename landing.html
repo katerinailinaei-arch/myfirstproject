@@ -95,6 +95,8 @@
       color: transparent;
       animation: titleShine 7s ease-in-out infinite alternate;
     }
+    .title-word { display: block; white-space: nowrap; }
+    .title-rest { display: block; }
     @keyframes titleShine { to { background-position: 100% center; } }
 
     .lead { max-width: 670px; margin: 0 0 34px; color: #d1c6b4; font-size: clamp(17px, 1.6vw, 20px); }
@@ -256,6 +258,7 @@
       text-shadow: 0 1px 0 #fff0bd, 0 3px 5px rgba(0,0,0,.85);
       letter-spacing: -.025em;
     }
+    .book-title-main { display: block; white-space: nowrap; }
     .book-title::after { content: ""; display: block; width: 72px; height: 1px; margin: 15px auto 0; background: linear-gradient(90deg, transparent, #e9c573, transparent); box-shadow: 0 0 6px rgba(233,197,115,.4); }
     .book-sub { text-align: center; color: #b9a377; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
     .book-seal {
@@ -386,19 +389,31 @@
       .nav { height: 66px; }
       .brand span { display: none; }
       .hero { min-height: auto; padding: 54px 0 70px; }
-      h1 { font-size: clamp(48px, 16vw, 70px); overflow-wrap: anywhere; }
+      h1 { font-size: clamp(39px, 12.2vw, 58px); overflow-wrap: normal; line-height: .98; }
+      .title-word { font-size: .94em; letter-spacing: -.065em; }
+      .title-rest { margin-top: .08em; }
       .lead { font-size: 16px; }
       .hero-actions { align-items: flex-start; flex-direction: column; }
       .cta { width: 100%; }
       .book-wrap { min-height: 405px; }
       .book { width: 235px; padding: 30px 26px; }
-      .book-title { font-size: 27px; }
+      .book-title { font-size: 24px; }
+      .book-title-main { font-size: 19px; letter-spacing: -.045em; }
       .orbit { width: 320px; }
       section { padding-block: 78px; }
       .section-head { align-items: start; flex-direction: column; }
       .card { padding: 26px; }
       .audience-item { grid-template-columns: 36px 1fr; gap: 12px; }
       .final-box { padding: 54px 20px; border-radius: 22px; }
+    }
+
+    @media (max-width: 350px) {
+      .wrap { width: min(100% - 22px, 1160px); }
+      h1 { font-size: 37px; }
+      .book { width: 218px; padding-inline: 28px; }
+      .book-title { font-size: 22px; }
+      .book-title-main { font-size: 17.5px; }
+      .orbit { width: 285px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -423,7 +438,7 @@
     <section class="hero wrap">
       <div class="reveal">
         <div class="eyebrow">Знания, которые помогают понять себя</div>
-        <h1>Психосоматика — полный сборник</h1>
+        <h1><span class="title-word">Психосоматика</span><span class="title-rest">— полный сборник</span></h1>
         <p class="lead">Ваш путеводитель по психосоматике без лишней теории. В одном месте собраны труды ведущих всемирно признанных специалистов — ясно, коротко и по существу.</p>
         <div class="hero-actions">
           <a class="cta" href="#order">Получить сборник <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -442,7 +457,7 @@
           <div class="book-medallion">
             <svg class="book-star" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="currentColor"/><circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".6"/><path d="M32 4c1.6 17.6 10.4 26.4 28 28-17.6 1.6-26.4 10.4-28 28-1.6-17.6-10.4-26.4-28-28C21.6 30.4 30.4 21.6 32 4Z" stroke="currentColor"/></svg>
           </div>
-          <div class="book-title">Психосоматика<br>полный сборник</div>
+          <div class="book-title"><span class="book-title-main">Психосоматика</span>полный сборник</div>
           <div class="book-sub">Причина · понимание · действие</div>
           <div class="book-seal">Полный<br>сборник</div>
           <span class="silk-ribbon"></span>
