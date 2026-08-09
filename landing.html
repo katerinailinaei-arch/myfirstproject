@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090806">
+  <title>Психосоматика — полный сборник</title>
+  <meta name="description" content="Практичный путеводитель по психосоматике: знания ведущих специалистов в формате понятного справочника.">
+  <style>
+    :root {
+      --bg: #090806;
+      --panel: rgba(25, 21, 14, .72);
+      --gold: #f4ce79;
+      --gold-2: #b9822e;
+      --cream: #f8f0df;
+      --muted: #b9ae9a;
+      --line: rgba(244, 206, 121, .18);
+      --shadow: 0 30px 80px rgba(0, 0, 0, .42);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(196, 140, 52, .15), transparent 29rem),
+        radial-gradient(circle at 90% 35%, rgba(244, 206, 121, .09), transparent 35rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E");
+      z-index: 10;
+    }
+
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand { display: flex; align-items: center; gap: 11px; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; }
+    .brand-mark { width: 30px; height: 30px; color: var(--gold); }
+    .nav-link { color: var(--muted); text-decoration: none; font-size: 14px; transition: color .25s; }
+    .nav-link:hover { color: var(--gold); }
+
+    .hero {
+      min-height: calc(100svh - 78px);
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 70px;
+      padding-block: 74px 96px;
+    }
+
+    .eyebrow, .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before, .section-label::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+
+    h1 {
+      max-width: 820px;
+      margin: 22px 0 24px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(54px, 7.2vw, 105px);
+      font-weight: 500;
+      line-height: .92;
+      letter-spacing: -.055em;
+      background: linear-gradient(118deg, #fff8e9 8%, #f2ca74 43%, #b97e29 78%, #f8dc9c 100%);
+      background-size: 180% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: titleShine 7s ease-in-out infinite alternate;
+    }
+    @keyframes titleShine { to { background-position: 100% center; } }
+
+    .lead { max-width: 670px; margin: 0 0 34px; color: #d1c6b4; font-size: clamp(17px, 1.6vw, 20px); }
+    .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .cta {
+      position: relative;
+      isolation: isolate;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 58px;
+      padding: 0 30px;
+      border: 0;
+      border-radius: 999px;
+      color: #1c1408;
+      background: linear-gradient(110deg, #b67c27, #f4d180 48%, #c58c35);
+      box-shadow: 0 12px 32px rgba(202, 145, 50, .25);
+      text-decoration: none;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+      animation: pulse 2.4s ease-out infinite;
+    }
+    .cta:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(202, 145, 50, .35); }
+    .cta svg { width: 18px; transition: transform .25s; }
+    .cta:hover svg { transform: translateX(4px); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 12px 32px rgba(202, 145, 50, .24), 0 0 0 0 rgba(244, 206, 121, .3); }
+      55% { box-shadow: 0 12px 32px rgba(202, 145, 50, .24), 0 0 0 14px rgba(244, 206, 121, 0); }
+    }
+    .book-wrap { position: relative; min-height: 510px; display: grid; place-items: center; perspective: 1100px; }
+    .orbit { position: absolute; width: 440px; aspect-ratio: 1; border: 1px solid rgba(244,206,121,.12); border-radius: 50%; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; inset: 12%; border: inherit; border-radius: inherit; }
+    .orbit::after { inset: 28%; }
+    .book {
+      position: relative;
+      width: min(310px, 72vw);
+      aspect-ratio: .72;
+      padding: 42px 35px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at 72% 18%, rgba(118, 84, 35, .22), transparent 24%),
+        repeating-linear-gradient(105deg, rgba(255,255,255,.012) 0 1px, transparent 1px 4px),
+        linear-gradient(145deg, #282119, #110e0a 52%, #080705);
+      border: 1px solid rgba(255,220,139,.62);
+      border-radius: 4px 16px 16px 4px;
+      box-shadow:
+        -17px 19px 0 #050403,
+        -20px 22px 7px rgba(0,0,0,.58),
+        0 36px 80px rgba(0,0,0,.72),
+        0 0 55px rgba(221,166,73,.13),
+        inset 11px 0 22px rgba(0,0,0,.62),
+        inset -2px 0 0 rgba(255,224,150,.12);
+      transform: rotateY(-9deg) rotateX(3deg) rotateZ(2deg);
+      transition: transform .25s ease-out;
+      z-index: 1;
+    }
+    .book::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border: 1px solid rgba(244,206,121,.42);
+      outline: 1px solid rgba(244,206,121,.12);
+      outline-offset: 5px;
+      box-shadow: inset 0 0 28px rgba(222,163,62,.06);
+      pointer-events: none;
+    }
+    .book::after {
+      content: "";
+      position: absolute;
+      top: 11px;
+      right: -16px;
+      bottom: 13px;
+      width: 17px;
+      border-radius: 0 9px 9px 0;
+      background:
+        linear-gradient(180deg, rgba(255,245,202,.72), transparent 5%, transparent 94%, rgba(83,47,9,.75)),
+        repeating-linear-gradient(90deg, #7c4d15 0 1px, #e1b65e 1px 2px, #f7dc98 2px 4px, #a8752c 4px 5px);
+      border: 1px solid #8b5d20;
+      border-left: 0;
+      box-shadow: 5px 3px 11px rgba(0,0,0,.72), inset -3px 0 5px rgba(72,39,6,.38);
+      transform: translateZ(-2px);
+    }
+    .book-spine {
+      position: absolute;
+      left: 9px;
+      top: 10px;
+      bottom: 10px;
+      width: 18px;
+      border-right: 1px solid rgba(244,206,121,.25);
+      background: linear-gradient(90deg, rgba(0,0,0,.66), rgba(244,206,121,.08), rgba(0,0,0,.28));
+      box-shadow: 6px 0 14px rgba(0,0,0,.38);
+    }
+    .spine-band {
+      position: absolute;
+      left: 5px;
+      width: 29px;
+      height: 7px;
+      z-index: 2;
+      border-block: 1px solid rgba(255,220,139,.6);
+      background: linear-gradient(180deg, #4c3519, #d0a153 48%, #402b14);
+      box-shadow: 0 2px 6px rgba(0,0,0,.55);
+    }
+    .spine-band.top { top: 45px; }
+    .spine-band.bottom { bottom: 45px; }
+    .book-pages {
+      position: absolute;
+      top: 19px;
+      right: -13px;
+      bottom: 21px;
+      width: 10px;
+      z-index: 2;
+      border-radius: 0 7px 7px 0;
+      background: repeating-linear-gradient(90deg, rgba(255,239,190,.9) 0 1px, rgba(143,91,25,.42) 1px 2px, rgba(244,207,128,.85) 2px 3px);
+      box-shadow: inset -2px 0 3px rgba(82,44,4,.4);
+      pointer-events: none;
+    }
+    .book-corner { position: absolute; width: 37px; height: 37px; z-index: 2; opacity: .95; }
+    .book-corner::before, .book-corner::after { content: ""; position: absolute; background: linear-gradient(135deg, #8a5a18, #ffe09a 52%, #9c671d); box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+    .book-corner::before { width: 100%; height: 6px; }
+    .book-corner::after { width: 6px; height: 100%; }
+    .book-corner.tl { left: 14px; top: 14px; }
+    .book-corner.tr { right: 14px; top: 14px; transform: rotate(90deg); }
+    .book-corner.bl { left: 14px; bottom: 14px; transform: rotate(-90deg); }
+    .book-corner.br { right: 14px; bottom: 14px; transform: rotate(180deg); }
+    .book-kicker { text-align: center; color: #bfa46f; font-size: 9px; font-weight: 700; letter-spacing: .26em; text-transform: uppercase; }
+    .book-medallion {
+      position: relative;
+      width: 76px;
+      height: 76px;
+      margin: 0 auto;
+      display: grid;
+      place-items: center;
+      color: #ffe19b;
+      border: 1px solid #d2a44f;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 28%, #695025, #1b150d 58%, #080604 70%);
+      box-shadow: 0 0 0 4px #171109, 0 0 0 5px rgba(236,190,100,.58), inset 0 0 18px rgba(244,206,121,.22), 0 8px 17px rgba(0,0,0,.7);
+    }
+    .book-medallion::before, .book-medallion::after {
+      content: "";
+      position: absolute;
+      width: 44px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d7aa55, transparent);
+    }
+    .book-medallion::before { transform: translateX(-61px); }
+    .book-medallion::after { transform: translateX(61px); }
+    .book-star { width: 48px; color: currentColor; filter: drop-shadow(0 0 5px rgba(255,219,137,.35)); }
+    .book-title {
+      font-family: Georgia, serif;
+      font-size: 31px;
+      line-height: 1.06;
+      text-align: center;
+      color: #e9c573;
+      text-shadow: 0 1px 0 #fff0bd, 0 3px 5px rgba(0,0,0,.85);
+      letter-spacing: -.025em;
+    }
+    .book-title::after { content: ""; display: block; width: 72px; height: 1px; margin: 15px auto 0; background: linear-gradient(90deg, transparent, #e9c573, transparent); box-shadow: 0 0 6px rgba(233,197,115,.4); }
+    .book-sub { text-align: center; color: #b9a377; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; }
+    .book-seal {
+      position: absolute;
+      right: -27px;
+      bottom: 62px;
+      width: 73px;
+      height: 73px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: #2a1907;
+      background: radial-gradient(circle at 35% 30%, #ffe7a8, #d19a3e 48%, #7e4b10 100%);
+      border: 1px solid #ffe2a0;
+      box-shadow: 0 8px 18px rgba(0,0,0,.65), inset 0 0 0 5px rgba(80,43,8,.18), inset 0 0 0 7px rgba(255,232,168,.25);
+      font: 700 8px/1.15 Georgia, serif;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(-9deg);
+      z-index: 3;
+    }
+    .book-seal::before {
+      content: "◆";
+      position: absolute;
+      inset: 6px;
+      display: grid;
+      place-items: start center;
+      color: rgba(77,40,5,.5);
+      font-size: 8px;
+    }
+    .silk-ribbon {
+      position: absolute;
+      right: 42px;
+      bottom: -31px;
+      width: 22px;
+      height: 54px;
+      z-index: -1;
+      background: linear-gradient(90deg, #39120f, #8d3227 45%, #461511);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%);
+      filter: drop-shadow(2px 4px 3px rgba(0,0,0,.7));
+    }
+
+    section { padding-block: 110px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 46px; }
+    h2 { max-width: 710px; margin: 14px 0 0; font-family: Georgia, serif; font-size: clamp(38px, 5vw, 65px); font-weight: 500; line-height: 1.05; letter-spacing: -.035em; }
+    .section-note { max-width: 280px; margin: 0; color: var(--muted); font-size: 14px; }
+
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card {
+      position: relative;
+      min-height: 330px;
+      padding: 32px;
+      overflow: hidden;
+      background: linear-gradient(145deg, rgba(37,31,20,.8), rgba(15,13,10,.92));
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      transform-style: preserve-3d;
+      transition: border-color .3s, transform .15s ease-out;
+    }
+    .card:hover { border-color: rgba(244,206,121,.45); }
+    .card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -90px; bottom: -100px; background: var(--gold-2); filter: blur(85px); opacity: .1; }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -45%;
+      left: -65%;
+      width: 45%;
+      height: 190%;
+      background: linear-gradient(90deg, transparent, rgba(244, 206, 121, .07), transparent);
+      transform: rotate(18deg);
+      animation: cardShimmer 7s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .card:nth-child(2)::before { animation-delay: 1.4s; }
+    .card:nth-child(3)::before { animation-delay: 2.8s; }
+    @keyframes cardShimmer {
+      0%, 22% { left: -65%; }
+      68%, 100% { left: 125%; }
+    }
+    .card-number { position: absolute; top: 22px; right: 25px; color: rgba(244,206,121,.22); font: 44px Georgia, serif; }
+    .icon-box { width: 58px; height: 58px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 16px; color: var(--gold); background: rgba(244,206,121,.05); }
+    .icon-box { animation: iconFloat 4s ease-in-out infinite; }
+    .card:nth-child(2) .icon-box { animation-delay: -.8s; }
+    .card:nth-child(3) .icon-box { animation-delay: -1.6s; }
+    .icon-box svg { width: 28px; height: 28px; }
+    @keyframes iconFloat {
+      0%, 100% { transform: translateY(0) rotate(0); box-shadow: 0 0 0 rgba(244,206,121,0); }
+      50% { transform: translateY(-7px) rotate(2deg); box-shadow: 0 10px 24px rgba(185,130,46,.12); }
+    }
+    .card h3 { margin: 55px 0 12px; font: 500 25px/1.2 Georgia, serif; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .audience { display: grid; grid-template-columns: .82fr 1.18fr; gap: 80px; align-items: start; border-top: 1px solid var(--line); }
+    .sticky { position: sticky; top: 35px; }
+    .audience-copy { display: grid; gap: 14px; }
+    .audience-item { padding: 27px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 42px 1fr; gap: 18px; }
+    .check { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; color: var(--gold); background: rgba(244,206,121,.08); border: 1px solid var(--line); }
+    .check svg { width: 17px; }
+    .audience-item h3 { margin: 1px 0 7px; font-size: 18px; }
+    .audience-item p { margin: 0; color: var(--muted); }
+
+    .final { padding: 80px 0 120px; }
+    .final-box { position: relative; overflow: hidden; padding: 72px 30px; text-align: center; background: linear-gradient(145deg, rgba(48,38,21,.86), rgba(15,13,10,.96)); border: 1px solid rgba(244,206,121,.25); border-radius: 30px; box-shadow: var(--shadow); }
+    .final-box::before { content: ""; position: absolute; width: 600px; height: 300px; top: -220px; left: 50%; transform: translateX(-50%); background: var(--gold); opacity: .16; filter: blur(80px); }
+    .final h2 { margin: 0 auto 18px; }
+    .final p { max-width: 660px; margin: 0 auto 30px; color: var(--muted); }
+    .disclaimer { max-width: 700px !important; margin-top: 28px !important; font-size: 11px; opacity: .65; }
+    footer { padding: 26px 0; border-top: 1px solid var(--line); color: #796f5e; font-size: 12px; text-align: center; }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 30px; padding-top: 65px; }
+      .book-wrap { min-height: 440px; }
+      .book { width: 270px; }
+      .orbit { width: 380px; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 270px; }
+      .card h3 { margin-top: 36px; }
+      .audience { grid-template-columns: 1fr; gap: 30px; }
+      .sticky { position: static; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap { width: min(100% - 28px, 1160px); }
+      .nav { height: 66px; }
+      .brand span { display: none; }
+      .hero { min-height: auto; padding: 54px 0 70px; }
+      h1 { font-size: clamp(48px, 16vw, 70px); overflow-wrap: anywhere; }
+      .lead { font-size: 16px; }
+      .hero-actions { align-items: flex-start; flex-direction: column; }
+      .cta { width: 100%; }
+      .book-wrap { min-height: 405px; }
+      .book { width: 235px; padding: 30px 26px; }
+      .book-title { font-size: 27px; }
+      .orbit { width: 320px; }
+      section { padding-block: 78px; }
+      .section-head { align-items: start; flex-direction: column; }
+      .card { padding: 26px; }
+      .audience-item { grid-template-columns: 36px 1fr; gap: 12px; }
+      .final-box { padding: 54px 20px; border-radius: 22px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav" aria-label="Основная навигация">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="17" stroke="currentColor"/><path d="M20 7v26M7 20h26M11 11l18 18M29 11 11 29" stroke="currentColor" stroke-width=".8"/></svg>
+        <span>Практичный справочник</span>
+      </div>
+      <a class="nav-link" href="#benefits">Что внутри ↓</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div class="reveal">
+        <div class="eyebrow">Знания, которые помогают понять себя</div>
+        <h1>Психосоматика — полный сборник</h1>
+        <p class="lead">Ваш путеводитель по психосоматике без лишней теории. В одном месте собраны труды ведущих всемирно признанных специалистов — ясно, коротко и по существу.</p>
+        <div class="hero-actions">
+          <a class="cta" href="#order">Получить сборник <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+
+      <div class="book-wrap reveal" aria-hidden="true">
+        <div class="orbit"></div>
+        <div class="book" id="book">
+          <span class="book-spine"></span>
+          <span class="spine-band top"></span><span class="spine-band bottom"></span>
+          <span class="book-pages"></span>
+          <span class="book-corner tl"></span><span class="book-corner tr"></span>
+          <span class="book-corner bl"></span><span class="book-corner br"></span>
+          <div class="book-kicker">Коллекционное издание</div>
+          <div class="book-medallion">
+            <svg class="book-star" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="24" stroke="currentColor"/><circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".6"/><path d="M32 4c1.6 17.6 10.4 26.4 28 28-17.6 1.6-26.4 10.4-28 28-1.6-17.6-10.4-26.4-28-28C21.6 30.4 30.4 21.6 32 4Z" stroke="currentColor"/></svg>
+          </div>
+          <div class="book-title">Психосоматика<br>полный сборник</div>
+          <div class="book-sub">Причина · понимание · действие</div>
+          <div class="book-seal">Полный<br>сборник</div>
+          <span class="silk-ribbon"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="benefits">
+      <div class="section-head reveal">
+        <div><div class="section-label">Почему это удобно</div><h2>Всё необходимое — в одном сборнике</h2></div>
+        <p class="section-note">Не энциклопедия сложных терминов, а практичный инструмент, к которому легко обращаться каждый день.</p>
+      </div>
+      <div class="cards">
+        <article class="card reveal"><span class="card-number">01</span><div class="icon-box"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="11" stroke="currentColor" stroke-width="1.6"/><path d="M16 9v7l4 3M11 4h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Экономит ваше время</h3><p>Не нужно искать разрозненную информацию в десятках книг и источников. Главное уже собрано и систематизировано.</p></article>
+        <article class="card reveal"><span class="card-number">02</span><div class="icon-box"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 5.5h13a4 4 0 0 1 4 4V26H10a4 4 0 0 1-4-4V5.5Z" stroke="currentColor" stroke-width="1.6"/><path d="M10 11h8M10 15h8M10 19h5M23 26a4 4 0 0 1 4-4V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h3>Работает как справочник</h3><p>Нашли интересующее состояние — и сразу получили ориентир, с какой возможной психологической причиной оно связано.</p></article>
+        <article class="card reveal"><span class="card-number">03</span><div class="icon-box"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 5a9 9 0 0 0-5.3 16.3V26h10.6v-4.7A9 9 0 0 0 16 5Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 26h8M13.5 29h5M13 16l2 2 4-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Объясняет простым языком</h3><p>Сложные идеи переведены на понятный язык, поэтому начать разбираться сможет каждый — без специальной подготовки.</p></article>
+      </div>
+    </section>
+
+    <section class="audience wrap">
+      <div class="sticky reveal"><div class="section-label">Для кого</div><h2>Для тех, кто хочет видеть глубже симптома</h2></div>
+      <div class="audience-copy">
+        <div class="audience-item reveal"><div class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Тем, кто ищет возможные корни состояний</h3><p>Получите понятную отправную точку для наблюдения за собой, своими переживаниями и повторяющимися реакциями.</p></div></div>
+        <div class="audience-item reveal"><div class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Тем, кто ценит время и конкретику</h3><p>Чёткая структура заменяет годы самостоятельного чтения сложной литературы и долгие поиски нужных сведений.</p></div></div>
+        <div class="audience-item reveal"><div class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Тем, кто хочет поддержать себя и близких</h3><p>Практичный формат помогает быстро найти нужную тему, обсудить её и наметить следующие шаги.</p></div></div>
+        <div class="audience-item reveal"><div class="check"><svg viewBox="0 0 24 24" fill="none"><path d="m6 12 4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h3>Много экспертов по цене одной книги</h3><p>Проверенные идеи разных авторов собраны вместе: меньше расходов, меньше усилий и больше пользы в одном доступе.</p></div></div>
+      </div>
+    </section>
+
+    <section class="final wrap" id="order">
+      <div class="final-box reveal">
+        <div class="section-label">Начните с понимания</div>
+        <h2>Работайте с возможной причиной, а не только со следствием</h2>
+        <p>Откройте сборник и получите быстрый доступ к систематизированным знаниям, которые помогают лучше понимать себя.</p>
+        <a class="cta" href="#" aria-label="Перейти к оплате">Получить полный сборник <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <p class="disclaimer">Материалы сборника носят информационный характер, не заменяют консультацию врача, диагностику или лечение. При наличии симптомов обратитесь к квалифицированному специалисту.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© <span id="year"></span> «Психосоматика — полный сборник»</div></footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reveals = document.querySelectorAll('.reveal');
+    if (!reducedMotion && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: .12 });
+      reveals.forEach((el, i) => { el.style.transitionDelay = `${Math.min(i % 4, 3) * 70}ms`; observer.observe(el); });
+    } else {
+      reveals.forEach(el => el.classList.add('visible'));
+    }
+
+    if (!reducedMotion && matchMedia('(pointer: fine)').matches) {
+      const book = document.getElementById('book');
+      const area = book.closest('.book-wrap');
+      area.addEventListener('pointermove', (event) => {
+        const box = area.getBoundingClientRect();
+        const x = (event.clientX - box.left) / box.width - .5;
+        const y = (event.clientY - box.top) / box.height - .5;
+        book.style.transform = `rotateY(${x * 16 - 9}deg) rotateX(${-y * 12 + 3}deg) rotateZ(2deg)`;
+      });
+      area.addEventListener('pointerleave', () => { book.style.transform = ''; });
+
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('pointermove', (event) => {
+          const box = card.getBoundingClientRect();
+          const rx = ((event.clientY - box.top) / box.height - .5) * -4;
+          const ry = ((event.clientX - box.left) / box.width - .5) * 4;
+          card.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        });
+        card.addEventListener('pointerleave', () => { card.style.transform = ''; });
+      });
+    }
+  </script>
+</body>
+</html>
